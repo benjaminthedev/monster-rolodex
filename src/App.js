@@ -9,13 +9,19 @@ class App extends Component {
     this.state = {
       monsters: [], 
       searchField: ''
-    }
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
   componentDidMount(){
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response =>  response.json())
       .then(users => this.setState({ monsters: users}))
+  }
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value })
   }
 
   render() {
@@ -28,7 +34,7 @@ class App extends Component {
         <input 
          type='search' 
         placeholder='search for your monster' 
-        onChange={e => this.setState({searchField: e.target.value})}/> 
+        onChange={this.handleChange}/> 
         <CardList monsters={filteredMonsters} />
       </div>  
     )
