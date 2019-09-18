@@ -20,7 +20,7 @@ class App extends Component {
       .then(response =>  response.json())
       .then(users => this.setState({ monsters: users}))
   }
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ searchField: e.target.value })
   }
 
@@ -31,6 +31,7 @@ class App extends Component {
       )
     return (
       <div className="App">
+      <h1>Monster Rolodex</h1>
         <input 
          type='search' 
         placeholder='search for your monster' 
